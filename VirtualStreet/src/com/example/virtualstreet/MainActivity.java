@@ -1,16 +1,34 @@
 package com.example.virtualstreet;
 
 import android.support.v7.app.ActionBarActivity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);  
 		setContentView(R.layout.activity_main);
+		//obteniendo fuente
+		Typeface font = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
+		//obtenendo elementos
+		TextView title= (TextView)findViewById(R.id.textView1);
+		Button start = (Button)findViewById(R.id.button_start);
+		Button map = (Button)findViewById(R.id.button_map);
+		Button settings = (Button)findViewById(R.id.button_settings);
+		//seteando la fuente
+		title.setTypeface(font);
+		start.setTypeface(font);
+		map.setTypeface(font);
+		settings.setTypeface(font);
+		
 	}
 
 	@Override
