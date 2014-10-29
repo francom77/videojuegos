@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/titles"
+    android:orientation="vertical"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/img_btn_juv"
+            android:layout_width="85dp"
+            android:layout_height="143dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/juv" />
+
+        <TextView
+            android:id="@+id/text_juv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/juv_description"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/text_dult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dult_description"
+            android:textColor="#ffffff" />
+
+        <ImageButton
+            android:id="@+id/img_btn_dult"
+            android:layout_width="116dp"
+            android:layout_height="155dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/dult" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/img_btn_bila"
+            android:layout_width="142dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitEnd"
+            android:src="@drawable/bila" />
+
+        <TextView
+            android:id="@+id/text_bila"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bila_description"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+</LinearLayout>

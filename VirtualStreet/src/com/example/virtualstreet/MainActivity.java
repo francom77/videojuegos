@@ -1,10 +1,12 @@
 package com.example.virtualstreet;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
 		//obteniendo fuente
 		Typeface font = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
 		//obtenendo elementos
-		TextView title= (TextView)findViewById(R.id.textView1);
+		TextView title= (TextView)findViewById(R.id.text_juv);
 		Button start = (Button)findViewById(R.id.button_start);
 		Button map = (Button)findViewById(R.id.button_map);
 		Button settings = (Button)findViewById(R.id.button_settings);
@@ -49,4 +51,9 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void configurar(View view) {
+        Intent i = new Intent(this, SelectCharacter.class );
+        startActivity(i);
+  }  
 }
