@@ -1,9 +1,9 @@
 package com.example.virtualstreet;
 
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
 		start.setTypeface(font);
 		map.setTypeface(font);
 		settings.setTypeface(font);
-		
+				
 	}
 
 	@Override
@@ -55,5 +55,9 @@ public class MainActivity extends ActionBarActivity {
 	public void configurar(View view) {
         Intent i = new Intent(this, SelectCharacter.class );
         startActivity(i);
-  }  
+  } 
+	public void showMap(View view){
+		Intent i = new Intent(this, MapActivity.class);
+		startActivity(i);
+	}
 }

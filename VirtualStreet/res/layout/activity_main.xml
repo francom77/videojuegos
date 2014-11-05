@@ -36,6 +36,12 @@
             android:textStyle="bold"
             android:typeface="sans" />
 
+        <com.facebook.widget.LoginButton 
+            android:id="@+id/authButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+        
         <Button
             android:id="@+id/button_start"
             android:layout_width="match_parent"
@@ -50,7 +56,8 @@
             android:layout_height="wrap_content"
             android:text="@string/button_map"
             android:layout_marginTop="10dp"
-            android:background="@drawable/buttonshape" />
+            android:background="@drawable/buttonshape"
+            android:onClick="showMap" />
 
         <Button
             android:id="@+id/button_settings"
