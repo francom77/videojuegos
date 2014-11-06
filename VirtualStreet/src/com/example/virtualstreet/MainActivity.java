@@ -3,7 +3,7 @@ package com.example.virtualstreet;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,13 +11,21 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity {
+	
+	private MainFragment mainFragment;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);  
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+		if (savedInstanceState == null) {
+			mainFragment = new MainFragment();
+			getSupportFragmentManager().beginTransaction().add(android.R.id.content, mainFragment).commit();
+		} else {
+			mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
+		}
 		//obteniendo fuente
 		Typeface font = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
 		//obtenendo elementos
@@ -30,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
 		start.setTypeface(font);
 		map.setTypeface(font);
 		settings.setTypeface(font);
+		
 				
 	}
 
