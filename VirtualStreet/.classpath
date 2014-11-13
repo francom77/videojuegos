@@ -6,5 +6,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="/home/paslo/Programas/vuforia-sdk-android-3-0-9/build/java/vuforia/Vuforia.jar"/>
+	<classpathentry kind="lib" path="libs/android-async-http-1.4.6.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
