@@ -13,5 +13,6 @@
     <string name="bila_description">Bila es una adulto que está interesado en conocer los lugares más emblemáticos de la ciudad y su historia como así también Cafes y Restaurantes donde pasar un buen momento.</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="app_id">299518183579902</string>
+    <string name="title_activity_camera">CameraActivity</string>
 
 </resources>

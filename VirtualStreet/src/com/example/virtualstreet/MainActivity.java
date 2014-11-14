@@ -65,6 +65,12 @@ public class MainActivity extends FragmentActivity {
         Intent i = new Intent(this, SelectCharacter.class );
         startActivity(i);
   } 
+	
+	public void showCamera(View view){
+		Intent i = new Intent(this,CameraActivity.class);
+		startActivity(i);
+	}
+	
 	public void showMap(View view){
 		Intent i = new Intent(this, MapActivity.class);
 		startActivity(i);
