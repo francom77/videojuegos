@@ -35,7 +35,7 @@
     <string name="UPDATE_ERROR_BAD_FRAME_QUALITY_DESC">The camera does not have enough detail, please try again later.</string>
     <string name="UPDATE_ERROR_UNKNOWN_DESC">The service is unavaiable, please try again later.</string>
     <string name="button_OK">OK</string>
-    <string name="menu_back">Vuforia Samples</string>
+    <string name="menu_back">Virtual Street</string>
     <string name="menu_extended_tracking">Extended Tracking</string>
     <string name="menu_character_mode">Character Mode</string>
     <string name="menu_flash">Flash</string>

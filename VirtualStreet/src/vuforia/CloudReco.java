@@ -92,7 +92,9 @@ private View mFlashOptionView;
 private Vector<Texture> mTextures;
 
 private static final String kAccessKey = "869a299f9911cd84f189d69fe8d5f79f35304372";
+// private static final String kAccessKey = "fb4de11c83853336e7d15fd84a8a91e6279c00d5"
 private static final String kSecretKey = "ad4a7110ad50100b22474f166d7ef4f5b3887a30";
+// private static final String kSecretKey = "59652942f3a160537c9475c1cc5d29cdb8ff4ef1";
 
 // View overlays to be displayed in the Augmented View
 private RelativeLayout mUILayout;
