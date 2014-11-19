@@ -16,11 +16,13 @@
         android:required="true" />
 
     <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="14" />
-    <uses-feature android:name="android.hardware.camera"
-                  android:required="true" />
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
@@ -59,6 +61,10 @@
         <activity
             android:name=".CameraActivity"
             android:label="@string/title_activity_camera" >
+        </activity>
+        <activity
+            android:name="vuforia.CloudReco"
+            android:label="@string/title_activity_cloud_reco" >
         </activity>
     </application>
 

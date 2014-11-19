@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity {
   } 
 	
 	public void showCamera(View view){
-		Intent i = new Intent(this,CameraActivity.class);
+		Intent i = new Intent(this,vuforia.CloudReco.class);
 		startActivity(i);
 	}
 	
