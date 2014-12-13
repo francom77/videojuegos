@@ -16,12 +16,15 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -47,6 +50,8 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 	private List<Zona> listZonas;
 	private LocationRequest mLocationRequest;
 	private LocationClient mLocationClient;
+	private boolean inside;
+	private Zona inZona;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getZonas();
 		setContentView(R.layout.activity_map);
+		inside = false;
 
 		mLocationRequest = LocationRequest.create();
 		mLocationRequest
@@ -105,7 +111,6 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 			public boolean onMarkerClick(Marker arg0){
 				Intent i = new Intent(MapActivity.this, DetailZoneActivity.class);
 				i.putExtra("zona", arg0.getSnippet());
-				Log.i("ID",arg0.getSnippet());
 				startActivity(i);
 				return true;
 			}
@@ -210,15 +215,25 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 
 	@Override
 	public void onLocationChanged(Location location) {
-		for (Iterator<Zona> iterator = listZonas.iterator(); iterator.hasNext();) {
-			Zona zona = (Zona) iterator.next();
+		if (inside){
 			float[] results = new float[1];
-			Location.distanceBetween(location.getLatitude(), location.getLongitude(), zona.getLatitude(), zona.getLongitude(),results);
-			if (results[0]<=zona.getRadio()) {
-				Toast.makeText(this, "Dentro de zona numero "+zona.getIdzona(), Toast.LENGTH_LONG).show();
-				break;
-			}else{
-				Toast.makeText(this, "Fuera de zona numero "+zona.getIdzona(), Toast.LENGTH_LONG).show();
+			Location.distanceBetween(location.getLatitude(), location.getLongitude(), inZona.getLatitude(), inZona.getLongitude(),results);
+			if (results[0]>inZona.getRadio()) { //Salio de la zona 
+				inside = false;
+				hideWhatToFind();
+				inZona = null;
+			}
+		}else{
+			for (Iterator<Zona> iterator = listZonas.iterator(); iterator.hasNext();) {
+				Zona zona = (Zona) iterator.next();
+				float[] results = new float[1];
+				Location.distanceBetween(location.getLatitude(), location.getLongitude(), zona.getLatitude(), zona.getLongitude(),results);
+				if (results[0]<=zona.getRadio()) { //Entro a la zona
+					inside = true;
+					inZona = zona;
+					showWhatToFind();
+					break;
+				}
 			}
 		}
 	}
@@ -261,4 +276,49 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 			return mDialog;
 		}
 	}
+	
+	public class WhatToFind extends DialogFragment{
+		
+		public WhatToFind(){
+			
+		}
+		
+		@Override
+		public Dialog onCreateDialog(Bundle savedInstanceState){
+			Dialog dialog = super.onCreateDialog(savedInstanceState);
+			dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+			return dialog;
+		}
+		
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+			View view = inflater.inflate(R.layout.dialog_fragment, container);
+			view.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent i = new Intent(MapActivity.this,vuforia.CloudReco.class);
+					startActivity(i);
+				}
+			});
+			// Cambiar la imagen
+			return view;
+		}
+		
+	}
+	
+	private void showWhatToFind(){
+		android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+		WhatToFind wtf = new WhatToFind();
+		wtf.show(fm, "wtf");
+	}
+	
+	private void hideWhatToFind(){
+		android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+		Fragment wtf = fm.findFragmentByTag("wtf");
+		if (wtf != null){
+			((DialogFragment) wtf).dismiss(); 
+		}
+	}
+	
 }
