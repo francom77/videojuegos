@@ -32,12 +32,12 @@ public class MainActivity extends FragmentActivity {
 		TextView title= (TextView)findViewById(R.id.text_juv);
 		Button start = (Button)findViewById(R.id.button_start);
 		Button map = (Button)findViewById(R.id.button_map);
-		Button settings = (Button)findViewById(R.id.button_settings);
+		Button character = (Button)findViewById(R.id.button_character);
 		//seteando la fuente
 		title.setTypeface(font);
 		start.setTypeface(font);
 		map.setTypeface(font);
-		settings.setTypeface(font);
+		character.setTypeface(font);
 		
 				
 	}
@@ -61,13 +61,14 @@ public class MainActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void configurar(View view) {
+	public void showCharacters(View view) {
         Intent i = new Intent(this, SelectCharacter.class );
         startActivity(i);
   } 
 	
 	public void showCamera(View view){
-		Intent i = new Intent(this,vuforia.CloudReco.class);
+		Intent i = new Intent(this,DetailZoneActivity.class);
+		i.putExtra("zona", "2");
 		startActivity(i);
 	}
 	

@@ -34,7 +34,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBStBLv-8J-ltf3dWSI7PZYoRrPojKXZIY" />
+            android:value="AIzaSyBI5nOzb8LxHIxuwc2xiSR5FLxY21QoGx0" />
 
         <activity
             android:name=".MainActivity"
@@ -65,6 +65,14 @@
         <activity
             android:name="vuforia.CloudReco"
             android:label="@string/title_activity_cloud_reco" >
+        </activity>
+        <activity
+            android:name=".CharacterActivity"
+            android:label="@string/title_activity_character" >
+        </activity>
+        <activity
+            android:name=".DetailZoneActivity"
+            android:label="@string/title_activity_detail_zone" >
         </activity>
     </application>
 

@@ -46,30 +46,30 @@
             android:id="@+id/button_start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_start"
             android:layout_marginTop="10dp"
             android:background="@drawable/buttonshape"
-            android:onClick="showCamera" />
+            android:onClick="showMap"
+            android:text="@string/button_start" />
 
         <Button
+            android:id="@+id/button_character"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_character"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/buttonshape"
+            android:onClick="showCharacters"
+            
+             />
+
+            <Button
             android:id="@+id/button_map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_map"
+            android:text="Puebas"
             android:layout_marginTop="10dp"
             android:background="@drawable/buttonshape"
-            android:onClick="showMap" />
-
-        <Button
-            android:id="@+id/button_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_settings"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="configurar"
-            
-             />
+            android:onClick="showCamera" />
 
     </LinearLayout>
 

@@ -8,6 +8,7 @@
     <string name="button_start">Comenzar</string>
     <string name="button_map">Ver Mapa</string>
     <string name="button_settings">Configuración</string>
+    <string name="button_character">Seleccionar Personaje</string>
     <string name="juv_description">Juv es un adolescente que nació en la ciudad. Si bien tiene intereses variados lo que más le gusta es conocer lugares donde los jóvenes se reúnen (plaza, peatonal, cine) y por supuesto, los lugares a donde salen a divertirse ¡Elegilo y sumante a sus aventuras!</string>
     <string name="dult_description">Dult es un adulto que está interesado en conocer lugares familiares donde pasar un buen rato como por ejemplo Campings y lugares recreativos como plazas donde pueda llevar a su familia ¡No te pierdas lo que Dult tiene para mostrate!</string>
     <string name="bila_description">Bila es una adulto que está interesado en conocer los lugares más emblemáticos de la ciudad y su historia como así también Cafes y Restaurantes donde pasar un buen momento.</string>
@@ -15,7 +16,6 @@
     <string name="app_id">299518183579902</string>
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_cloud_reco">CloudReco</string>
-    
     <string name="UPDATE_ERROR_AUTHORIZATION_FAILED_TITLE">Authorization Error</string>
     <string name="UPDATE_ERROR_PROJECT_SUSPENDED_TITLE">Authorization Error</string>
     <string name="UPDATE_ERROR_NO_NETWORK_CONNECTION_TITLE">Network Unavailable</string>
@@ -48,5 +48,7 @@
     <string name="menu_camera">CAMERA</string>
     <string name="menu_camera_front">Front</string>
     <string name="menu_camera_back">Rear</string>
+    <string name="title_activity_character">CharacterActivity</string>
+    <string name="title_activity_detail_zone">DetailZoneActivity</string>
 
 </resources>
