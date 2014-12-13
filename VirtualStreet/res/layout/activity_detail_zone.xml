@@ -19,7 +19,6 @@
                     android:id="@+id/zone_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Zona Plaza"
                     android:textColor="#ffffff"
                     android:textSize="45dp" />
             
@@ -67,7 +66,6 @@
                     android:id="@+id/descripcion_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/juv_description"
                     android:textColor="#ffffff"
                     android:textSize="20dp" />
 
