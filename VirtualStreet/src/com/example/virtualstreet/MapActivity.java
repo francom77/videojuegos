@@ -10,12 +10,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -29,9 +31,11 @@ import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -91,8 +95,21 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 	private void drawZona(Zona zona) {
 		mMap.addCircle(new CircleOptions().center(zona.getLatLng())
 				.radius(zona.getRadio()).strokeColor(Color.RED).strokeWidth(3));
-		mMap.addMarker(new MarkerOptions().position(zona.getLatLng()).title(
-				zona.getDescripcion()));
+		mMap.addMarker(new MarkerOptions()
+				.position(zona.getLatLng())
+				.title(zona.getDescripcion())
+				.snippet(Integer.toString(zona.getIdzona())));
+		mMap.setOnMarkerClickListener(new OnMarkerClickListener()
+		{
+			@Override
+			public boolean onMarkerClick(Marker arg0){
+				Intent i = new Intent(MapActivity.this, DetailZoneActivity.class);
+				i.putExtra("zona", arg0.getSnippet());
+				Log.i("ID",arg0.getSnippet());
+				startActivity(i);
+				return true;
+			}
+		});
 	}
 
 	private void setUpMapIfNeeded() {
