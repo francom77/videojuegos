@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.location.Location;
@@ -133,25 +132,6 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 		setUpMapIfNeeded();
 	}
 
-	private boolean servicesConnected() {
-		int resultCode = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(this);
-		if (ConnectionResult.SUCCESS == resultCode) {
-			return true;
-		} else {
-
-			Dialog dialog = GooglePlayServicesUtil.getErrorDialog(resultCode,
-					this, 0);
-			if (dialog != null) {
-				ErrorDialogFragment errorFragment = new ErrorDialogFragment();
-				errorFragment.setDialog(dialog);
-				errorFragment.show(getSupportFragmentManager(),
-						LocationUtils.APPTAG);
-			}
-			return false;
-		}
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.map, menu);
@@ -213,7 +193,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 
 	@Override
 	public void onLocationChanged(Location location) {
-		for (Iterator iterator = listZonas.iterator(); iterator.hasNext();) {
+		for (Iterator<Zona> iterator = listZonas.iterator(); iterator.hasNext();) {
 			Zona zona = (Zona) iterator.next();
 			float[] results = new float[1];
 			Location.distanceBetween(location.getLatitude(), location.getLongitude(), zona.getLatitude(), zona.getLongitude(),results);

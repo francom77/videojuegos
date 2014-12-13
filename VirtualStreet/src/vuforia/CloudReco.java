@@ -2,28 +2,15 @@ package vuforia;
 
 import java.util.Vector;
 
-import com.example.virtualstreet.R;
-import com.example.virtualstreet.R.layout;
-import com.qualcomm.vuforia.CameraDevice;
-import com.qualcomm.vuforia.ImageTracker;
-import com.qualcomm.vuforia.State;
-import com.qualcomm.vuforia.TargetFinder;
-import com.qualcomm.vuforia.TargetSearchResult;
-import com.qualcomm.vuforia.Trackable;
-import com.qualcomm.vuforia.Tracker;
-import com.qualcomm.vuforia.TrackerManager;
-import com.qualcomm.vuforia.Vuforia;
+import utils.SampleAppMenu;
+import utils.SampleAppMenuGroup;
+import utils.SampleAppMenuInterface;
 import utils.SampleApplicationControl;
 import utils.SampleApplicationException;
 import utils.SampleApplicationSession;
 import utils.utils.LoadingDialogHandler;
 import utils.utils.SampleApplicationGLView;
 import utils.utils.Texture;
-import vuforia.CloudRecoRenderer;
-import utils.SampleAppMenu;
-import utils.SampleAppMenuGroup;
-import utils.SampleAppMenuInterface;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -38,16 +25,25 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.example.virtualstreet.R;
+import com.qualcomm.vuforia.CameraDevice;
+import com.qualcomm.vuforia.ImageTracker;
+import com.qualcomm.vuforia.State;
+import com.qualcomm.vuforia.TargetFinder;
+import com.qualcomm.vuforia.TargetSearchResult;
+import com.qualcomm.vuforia.Trackable;
+import com.qualcomm.vuforia.Tracker;
+import com.qualcomm.vuforia.TrackerManager;
+import com.qualcomm.vuforia.Vuforia;
 
 public class CloudReco extends Activity implements SampleApplicationControl,
 SampleAppMenuInterface
