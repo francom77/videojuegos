@@ -12,23 +12,21 @@ import com.loopj.android.http.RequestParams;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailZoneActivity extends Activity {
 
-	private Zona currentZona;
+	public Zona currentZona;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail_zone);
 		setTitle("Plaza");
-		Bundle bundle = getIntent().getExtras();
-		getCurrentZona(getIntent().getExtras().getString("zona"));
-
-		Toast.makeText(this, "Dentro de zona numero "+ currentZona.getNombre(), Toast.LENGTH_LONG).show();
-		
+		getCurrentZona(getIntent().getExtras().getString("zona"));		
 	}
 
 	@Override
@@ -50,22 +48,27 @@ public class DetailZoneActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void getCurrentZona(String idZona){
-		RequestParams params = new RequestParams();
-		params.put("ID", idZona);
-		RestClient.get("Zonas", params, new JsonHttpResponseHandler() {
+	private void setData(String nombre, String description){
+		TextView title = (TextView) findViewById(R.id.zone_title);
+		TextView descripcion = (TextView) findViewById(R.id.descripcion_text);
+		title.setText(nombre);
+		descripcion.setText(description);
+	}
+	
+	private void getCurrentZona(String idZona){
+
+		RestClient.get("Zonas/"+idZona, null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject JSONzona) {
 					try {	
-						Zona zona = new Zona(JSONzona.getInt("idzona"),
+						currentZona = new Zona(JSONzona.getInt("idzona"),
 								JSONzona.getInt("radio"), JSONzona
 										.getString("nombre"), JSONzona
 										.getString("descripcion"), JSONzona
 										.getDouble("latitude"), JSONzona
 										.getDouble("longitude"));
-						currentZona = zona;
-					System.out.println(zona.getNombre());
+						setData(currentZona.getNombre(), currentZona.getDescripcion());
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
