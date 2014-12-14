@@ -1,6 +1,7 @@
 package com.example.virtualstreet;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -15,18 +16,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class DetailZoneActivity extends Activity {
 
-	public Zona currentZona;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_detail_zone);
-		setTitle("Plaza");
-		getCurrentZona(getIntent().getExtras().getString("zona"));		
+		getCurrentZona(getIntent().getExtras().getString("zona"));
+		getKing(getIntent().getExtras().getString("zona"));
 	}
 
 	@Override
@@ -47,7 +51,7 @@ public class DetailZoneActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	private void setData(String nombre, String description){
 		TextView title = (TextView) findViewById(R.id.zone_title);
 		TextView descripcion = (TextView) findViewById(R.id.descripcion_text);
@@ -55,28 +59,75 @@ public class DetailZoneActivity extends Activity {
 		descripcion.setText(description);
 	}
 	
+	private void setKingName(String nombre){
+		TextView name = (TextView) findViewById(R.id.nombre);
+		name.setText(nombre);
+	}
+
+	private void setKingPuntos(String puntos){
+		TextView p = (TextView) findViewById(R.id.puntos);
+		p.setText("Puntaje: " + puntos);
+	}
+
+	private void getKing(String idZona){
+
+		String urlfilter = "UsuarioHasZonas/?filter[where][zonaIdzona]="+idZona+"&filter[order]=puntaje DESC&filter[limit]=1";
+		RestClient.get(urlfilter, null, new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONArray usersAPI) {
+				for (int i = 0; i < usersAPI.length(); i++) {
+					try {
+						JSONObject JSONuser = usersAPI.getJSONObject(i);
+						setKingPuntos(Integer.toString(JSONuser.getInt("puntaje")));
+						RestClient.get("Usuarios/"+ JSONuser.getInt("usuarioIdusuario"), null, new JsonHttpResponseHandler() {
+							@Override
+							public void onSuccess(int statusCode, Header[] headers,
+									JSONObject userAPI) {
+								try {
+									setKingName(userAPI.getString("nombre"));
+								} catch (JSONException e) {
+									e.printStackTrace();
+								}
+							}
+						});
+
+					} catch (JSONException e) {
+
+						e.printStackTrace();
+					}
+				}
+				
+			}
+			
+		});
+
+
+	}
+
 	private void getCurrentZona(String idZona){
 
 		RestClient.get("Zonas/"+idZona, null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject JSONzona) {
-					try {	
-						currentZona = new Zona(JSONzona.getInt("idzona"),
-								JSONzona.getInt("radio"), JSONzona
-										.getString("nombre"), JSONzona
-										.getString("descripcion"), JSONzona
-										.getDouble("latitude"), JSONzona
-										.getDouble("longitude"));
-						setData(currentZona.getNombre(), currentZona.getDescripcion());
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+				try {	
+					Zona currentZona = new Zona(JSONzona.getInt("idzona"),
+							JSONzona.getInt("radio"), JSONzona
+							.getString("nombre"), JSONzona
+							.getString("descripcion"), JSONzona
+							.getDouble("latitude"), JSONzona
+							.getDouble("longitude"));
+					setData(currentZona.getNombre(), currentZona.getDescripcion());
+				} catch (JSONException e) {
+					e.printStackTrace();
 				}
-			
+			}
+
 		});
-	
-	
+
+
 	}
+
 }
 
