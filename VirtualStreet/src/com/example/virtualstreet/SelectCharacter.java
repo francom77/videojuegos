@@ -1,18 +1,13 @@
 package com.example.virtualstreet;
 
-import java.util.ArrayList;
-
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +16,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class SelectCharacter extends Activity {
 
