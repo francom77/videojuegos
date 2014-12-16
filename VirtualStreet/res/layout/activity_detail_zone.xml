@@ -23,36 +23,27 @@
                     android:textSize="45dp" />
             
             <TextView
-                    android:id="@+id/ranking_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ranking"
-                    android:textColor="#ffffff"
-                    android:textSize="35dp" />
+                android:id="@+id/ranking_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rey en la Zona"
+                android:textColor="#ffffff"
+                android:textSize="35dp" />
             
             <TextView
-                    android:id="@+id/primero"
+                    android:id="@+id/nombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Franco Escobar: 35 puntos"
                     android:textColor="#ffffff"
                     android:textSize="20dp" />
             
             <TextView
-                    android:id="@+id/segundo"
+                    android:id="@+id/puntos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Paulo Muchutti: 30 puntos"
                     android:textColor="#ffffff"
                     android:textSize="20dp" />
             
-            <TextView
-                    android:id="@+id/tercero"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ladero ladero: 30 puntos"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp" />
             
             <TextView
                     android:id="@+id/descripcion_title"
