@@ -67,8 +67,7 @@ public class MainActivity extends FragmentActivity {
   } 
 	
 	public void showCamera(View view){
-		Intent i = new Intent(this,DetailZoneActivity.class);
-		i.putExtra("zona", "2");
+		Intent i = new Intent(this,LimpiacityActivity.class);
 		startActivity(i);
 	}
 	

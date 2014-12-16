@@ -50,5 +50,6 @@
     <string name="menu_camera_back">Rear</string>
     <string name="title_activity_character">CharacterActivity</string>
     <string name="title_activity_detail_zone">DetailZoneActivity</string>
+    <string name="title_activity_limpiacity">LimpiacityActivity</string>
 
 </resources>

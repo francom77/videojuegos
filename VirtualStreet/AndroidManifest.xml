@@ -74,6 +74,10 @@
             android:name=".DetailZoneActivity"
             android:label="@string/title_activity_detail_zone" >
         </activity>
+        <activity
+            android:name=".LimpiacityActivity"
+            android:label="@string/title_activity_limpiacity" >
+        </activity>
     </application>
 
 </manifest>

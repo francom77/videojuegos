@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,12 +59,25 @@ public class CharacterActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	private void setData(String nombre, String descripcion){
+	
+	private void setData(String name, String descripcion, String id){
 		TextView title = (TextView) findViewById(R.id.title_char);
 		TextView desc = (TextView) findViewById(R.id.desc_char);
 		
-		title.setText(nombre);
+		title.setText(name);
 		desc.setText(descripcion);
+		
+		ImageView imagen = (ImageView) findViewById(R.id.imageView1);
+		if (name.equals("JUV")) {
+			imagen.setImageResource(R.drawable.juv);
+		} else if (name.equals("DULT")) {
+			imagen.setImageResource(R.drawable.dult);
+		} else {
+			imagen.setImageResource(R.drawable.bila);
+		}
+		
+		Button btn = (Button) findViewById(R.id.btn_char);
+		btn.setContentDescription(id);
 		
 	}
 	private void getCurrentCharacter(String idPersonaje){
@@ -73,7 +88,7 @@ public class CharacterActivity extends ActionBarActivity {
 					JSONObject JSONchar) {
 				try {	
 					
-					setData(JSONchar.getString("nombre"), JSONchar.getString("descripcion"));
+					setData(JSONchar.getString("nombre"), JSONchar.getString("descripcion"), Integer.toString(JSONchar.getInt("idpersonaje")));
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
