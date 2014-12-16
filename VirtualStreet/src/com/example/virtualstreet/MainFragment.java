@@ -10,10 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 public class MainFragment extends Fragment{
 	
@@ -82,8 +87,36 @@ public class MainFragment extends Fragment{
 	private void onSessionStateChange(Session session, SessionState state, Exception exception){
 		if (state.isOpened()) {
 			Log.i(TAG, "Logged in");
+			Request.newMeRequest(Session.getActiveSession(), new Request.GraphUserCallback() {
+				
+				@Override
+				public void onCompleted(GraphUser user, Response response) {
+					if (user != null) {
+						//CallRestApi(user.getId(),user.getName(),user.getBirthday());
+					}									
+				}
+			}).executeAsync();
 		} else {
 			Log.i(TAG, "Logged out");
 		}
 	}
+	
+	private void CallRestApi(String Id,String name,String fecha){
+		RequestParams params = new RequestParams();
+		params.put("nombre", name );
+		params.put("idFb", Id);
+		params.put("fechaNac", fecha);
+		params.put("personajeIdpersonaje", "1");
+		RestClient.post("Usuarios", params, new JsonHttpResponseHandler(){
+			
+			
+			
+			//idusuario
+			//nombre
+			//idFb
+			//fechaNac
+			//personajeIdpersonaje
+		});
+	}
+	
 }
