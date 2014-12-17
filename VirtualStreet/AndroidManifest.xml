@@ -78,6 +78,10 @@
             android:name=".LimpiacityActivity"
             android:label="@string/title_activity_limpiacity" >
         </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
     </application>
 
 </manifest>

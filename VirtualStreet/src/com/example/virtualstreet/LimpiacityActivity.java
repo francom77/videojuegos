@@ -3,6 +3,7 @@ package com.example.virtualstreet;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -15,7 +16,7 @@ import android.widget.Button;
 
 public class LimpiacityActivity extends Activity {
 	private int puntaje = 0;
-	private final int delayTime = 30000;
+	private final int delayTime = 3000;
 	private Handler myHandler = new Handler();
 	
 	@Override
@@ -72,7 +73,13 @@ public class LimpiacityActivity extends Activity {
 	
 	private Runnable closeControls = new Runnable() {
 	    public void run() {
-	        finish();
+	    	Intent i = new Intent(LimpiacityActivity.this, ResultActivity.class);
+	    	i.putExtra("puntos", Integer.toString(puntaje));
+	    	startActivity(i);
+            finish();
+	    	
 	    }
 	};
 }
+
+//)
