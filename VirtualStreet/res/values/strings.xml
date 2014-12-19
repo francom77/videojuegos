@@ -16,6 +16,7 @@
     <string name="app_id">299518183579902</string>
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_cloud_reco">CloudReco</string>
+    <string name="title_activity_image_target">ImageTarget</string>
     <string name="UPDATE_ERROR_AUTHORIZATION_FAILED_TITLE">Authorization Error</string>
     <string name="UPDATE_ERROR_PROJECT_SUSPENDED_TITLE">Authorization Error</string>
     <string name="UPDATE_ERROR_NO_NETWORK_CONNECTION_TITLE">Network Unavailable</string>

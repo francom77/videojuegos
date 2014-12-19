@@ -54,8 +54,11 @@ public class ResultActivity extends Activity {
 	public void publishStory() {
 		FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
 				.setName("Virtual Street")
-				.setDescription("He hecho "+puntos+" puntos. ¿Podras superarme?")
-				.setLink("http://virtualsback-uniquegames.rhcloud.com/explorer/").build();
+				.setDescription(
+						"He hecho " + puntos + " puntos. ¿Podras superarme?")
+				.setLink(
+						"http://virtualsback-uniquegames.rhcloud.com/explorer/")
+				.build();
 		uiHelper.trackPendingDialogCall(shareDialog.present());
 
 	}
@@ -125,6 +128,7 @@ public class ResultActivity extends Activity {
 				new JsonHttpResponseHandler() {
 
 				});
+
 	}
 
 }

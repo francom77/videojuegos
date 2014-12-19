@@ -236,6 +236,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 				if (results[0]<=zona.getRadio()) { //Entro a la zona
 					inside = true;
 					inZona = zona;
+					Prefs.saveInt("zona", zona.getIdzona() , getApplication().getApplicationContext());
 					showWhatToFind();
 					break;
 				}
@@ -302,7 +303,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 				
 				@Override
 				public void onClick(View v) {
-					Intent i = new Intent(MapActivity.this,vuforia.CloudReco.class);
+					Intent i = new Intent(MapActivity.this,vuforia.ImageTargets.class);
 					startActivity(i);
 				}
 			});

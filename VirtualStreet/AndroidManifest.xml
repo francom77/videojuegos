@@ -67,6 +67,10 @@
             android:label="@string/title_activity_cloud_reco" >
         </activity>
         <activity
+            android:name="vuforia.ImageTargets"
+            android:label="@string/title_activity_image_target" >
+        </activity>
+        <activity
             android:name=".CharacterActivity"
             android:label="@string/title_activity_character" >
         </activity>
