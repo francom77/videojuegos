@@ -303,7 +303,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 				
 				@Override
 				public void onClick(View v) {
-					Intent i = new Intent(MapActivity.this,vuforia.CloudReco.class);
+					Intent i = new Intent(MapActivity.this,vuforia.ImageTargets.class);
 					startActivity(i);
 				}
 			});
