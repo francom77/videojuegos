@@ -4,27 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button_map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="showCamera"
-            android:text="Puebas" />
-
-        <Button
-            android:id="@+id/button_character"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/button_map"
-            android:layout_alignParentLeft="true"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="showCharacters"
-            android:text="@string/button_character" />
+<!--         <Button -->
+<!--             android:id="@+id/button_map" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:layout_alignParentBottom="true" -->
+<!--             android:layout_alignParentLeft="true" -->
+<!--             android:layout_marginBottom="20dp" -->
+<!--             android:background="@drawable/buttonshape" -->
+<!--             android:onClick="showCamera" -->
+<!--             android:text="Puebas" /> -->
 
         <Button
             android:id="@+id/button_start"
@@ -36,5 +25,16 @@
             android:background="@drawable/buttonshape"
             android:onClick="showMap"
             android:text="@string/button_start" />
+
+        <Button
+            android:id="@+id/button_character"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="33dp"
+            android:background="@drawable/buttonshape"
+            android:onClick="showCharacters"
+            android:text="@string/button_character" />
 
 </RelativeLayout>

@@ -64,11 +64,11 @@ public class MainActivity extends FragmentActivity {
 		startActivity(i);
 	}
 
-	public void showCamera(View view) {
-		Intent i = new Intent(this, LimpiacityActivity.class);
-		i.putExtra("zonaOrigen", 2);
-		startActivity(i);
-	}
+//	public void showCamera(View view) {
+//		Intent i = new Intent(this, LimpiacityActivity.class);
+//		i.putExtra("zonaOrigen", 2);
+//		startActivity(i);
+//	}
 
 	public void showMap(View view) {
 		Intent i = new Intent(this, MapActivity.class);
