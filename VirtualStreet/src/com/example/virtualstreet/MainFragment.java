@@ -7,13 +7,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -116,11 +121,6 @@ public class MainFragment extends Fragment{
 				@Override
 				public void onCompleted(GraphUser user, Response response) {
 					if (user != null) {
-						if (response != null) {
-							Log.i("fb", response.getRawResponse());
-						}else{
-							Log.i("fb","ladero");
-						}
 						//Log.i("id", user.getId());
 						//Log.i("nombre", user.getName());
 						//Log.i("cumple", user.getBirthday());
@@ -128,6 +128,10 @@ public class MainFragment extends Fragment{
 					}									
 				}
 			}).executeAsync();
+			LayoutInflater li = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LinearLayout layout = (LinearLayout) li.inflate(R.layout.buttons_main,null,false);
+			ViewGroup insert = (ViewGroup) getActivity().findViewById(R.id.insertPoint);
+			insert.addView(layout,0,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 		} else {
 			Log.i(TAG, "Logged out");
 		}
@@ -154,6 +158,22 @@ public class MainFragment extends Fragment{
 		Prefs.saveString("idFB", Id, getActivity().getApplication());
 		
 		
+	}
+	
+	private void setFuente() {
+		// obteniendo fuente
+		Typeface font = Typeface.createFromAsset(getActivity().getAssets(),
+				"gloriahallelujah.ttf");
+		// obtenendo elementos
+		TextView title = (TextView) getActivity().findViewById(R.id.text_juv);
+		Button start = (Button) getActivity().findViewById(R.id.button_start);
+		Button map = (Button) getActivity().findViewById(R.id.button_map);
+		Button character = (Button) getActivity().findViewById(R.id.button_character);
+		// seteando la fuente
+		title.setTypeface(font);
+		start.setTypeface(font);
+		map.setTypeface(font);
+		character.setTypeface(font);
 	}
 	
 }

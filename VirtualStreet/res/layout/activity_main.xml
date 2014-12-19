@@ -42,34 +42,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
         
-        <Button
-            android:id="@+id/button_start"
+        <LinearLayout 
+            android:id="@+id/insertPoint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="showMap"
-            android:text="@string/button_start" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+            ></LinearLayout>
 
-        <Button
-            android:id="@+id/button_character"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_character"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="showCharacters"
-            
-             />
-
-            <Button
-            android:id="@+id/button_map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Puebas"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/buttonshape"
-            android:onClick="showCamera" />
 
     </LinearLayout>
 

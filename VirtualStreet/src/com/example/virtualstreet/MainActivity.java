@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
-	
+
 	private MainFragment mainFragment;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,25 +22,16 @@ public class MainActivity extends FragmentActivity {
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			mainFragment = new MainFragment();
-			getSupportFragmentManager().beginTransaction().add(android.R.id.content, mainFragment).commit();
+			getSupportFragmentManager().beginTransaction()
+					.add(android.R.id.content, mainFragment).commit();
 		} else {
-			mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(android.R.id.content);
+			mainFragment = (MainFragment) getSupportFragmentManager()
+					.findFragmentById(android.R.id.content);
 		}
-		//obteniendo fuente
-		Typeface font = Typeface.createFromAsset(getAssets(), "gloriahallelujah.ttf");
-		//obtenendo elementos
-		TextView title= (TextView)findViewById(R.id.text_juv);
-		Button start = (Button)findViewById(R.id.button_start);
-		Button map = (Button)findViewById(R.id.button_map);
-		Button character = (Button)findViewById(R.id.button_character);
-		//seteando la fuente
-		title.setTypeface(font);
-		start.setTypeface(font);
-		map.setTypeface(font);
-		character.setTypeface(font);
-		
-				
+
 	}
+
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,19 +51,19 @@ public class MainActivity extends FragmentActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void showCharacters(View view) {
-        Intent i = new Intent(this, SelectCharacter.class );
-        startActivity(i);
-  } 
-	
-	public void showCamera(View view){
-		Intent i = new Intent(this,LimpiacityActivity.class);
+		Intent i = new Intent(this, SelectCharacter.class);
+		startActivity(i);
+	}
+
+	public void showCamera(View view) {
+		Intent i = new Intent(this, LimpiacityActivity.class);
 		i.putExtra("zonaOrigen", 2);
 		startActivity(i);
 	}
-	
-	public void showMap(View view){
+
+	public void showMap(View view) {
 		Intent i = new Intent(this, MapActivity.class);
 		startActivity(i);
 	}
