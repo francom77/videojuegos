@@ -13,44 +13,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-            
+
             <TextView
-                 android:id="@+id/puntos_title"
+                android:id="@+id/puntos_title"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:text="Puntaje"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/titles"
-                android:textSize="45dp"
-                android:text="Puntaje" />
-            
-            
+                android:textSize="45dp" />
+
             <TextView
-                    android:id="@+id/pregunta"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="¿Que deseas hacer?"
-                    android:textSize="20dp" 
-                    android:textColor="@color/titles" />
-                    
-             <Button
+                android:id="@+id/pregunta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¿Que deseas hacer?"
+                android:textColor="@color/titles"
+                android:textSize="20dp" />
+
+            <Button
                 android:id="@+id/btn_reintentar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Reintentar"
-                android:onClick="reintentar"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/buttonshape" />        
-            
-             <Button
+                android:background="@drawable/buttonshape"
+                android:onClick="reintentar"
+                android:text="Reintentar" />
+
+            <Button
                 android:id="@+id/btn_salir"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Salir"
-                android:onClick="salir"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/buttonshape" />
+                android:background="@drawable/buttonshape"
+                android:onClick="salir"
+                android:text="Salir" />
 
+            <Button
+                android:id="@+id/publishButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonshape"
+                android:text="Publicar en mi muro" />
         </LinearLayout>
     </ScrollView>
 

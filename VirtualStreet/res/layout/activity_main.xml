@@ -1,15 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/mainactivitybackgraund" >
 
-    <!-- <ImageView -->
+<!--     <ImageView  -->
     <!-- android:layout_width="fill_parent" -->
     <!-- android:layout_height="fill_parent" -->
     <!-- android:src="@drawable/mainactivitybackgraund" -->
     <!-- android:scaleType="centerCrop"	> -->
 
 
-    <!-- </ImageView> -->
+<!--     </ImageView> -->
 
     <RelativeLayout
         android:layout_width="match_parent"
