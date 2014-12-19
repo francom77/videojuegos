@@ -10,7 +10,6 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
 
