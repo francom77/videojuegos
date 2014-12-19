@@ -11,6 +11,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -99,8 +100,11 @@ public class CharacterActivity extends ActionBarActivity {
 	public void saveCharacter(View view){
 		
 		int id = Integer.valueOf((String) view.getContentDescription());
-		SharedPreferences sp = Prefs.getSharedPreferences(getApplication());
-		Prefs.saveInt("character", id , getApplication());
+		SharedPreferences sp = Prefs.getSharedPreferences(getApplication().getApplicationContext());
+		Prefs.saveInt("character", id , getApplication().getApplicationContext());
+		Log.i("idtoapi", Integer.toString(sp.getInt("id", 100)));
+		Log.i("character", Integer.toString(sp.getInt("character", 100)));
+		Log.i("character", sp.getString("idFB", "default"));
 		RequestParams params = new RequestParams();
 		params.put("idusuario", sp.getInt("id", 100) );
 		params.put("personajeIdpersonaje", id);
