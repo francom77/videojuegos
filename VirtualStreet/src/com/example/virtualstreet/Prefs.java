@@ -2,7 +2,6 @@ package com.example.virtualstreet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 public class Prefs {
 
