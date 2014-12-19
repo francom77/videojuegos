@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,8 +78,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 
 	private void getZonas() {
 		listZonas = new ArrayList<Zona>();
-		SharedPreferences sp = Prefs.getSharedPreferences(getApplication());
+		SharedPreferences sp = Prefs.getSharedPreferences(getApplication().getApplicationContext());
 		String personaje = Integer.toString(sp.getInt("character", 100));
+		Log.i("Personaje", personaje);
 		RestClient.get("Zonas/?filter[where][personajeIdpersonaje]="+personaje, null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,

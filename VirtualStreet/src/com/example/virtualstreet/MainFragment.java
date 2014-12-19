@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -26,27 +27,27 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class MainFragment extends Fragment{
-	
+
 	private static final String TAG = "MainFragment";
 	private int count;
-	
+
 	private Session.StatusCallback callback = new Session.StatusCallback() {
-		
+
 		@Override
 		public void call(Session session, SessionState state, Exception exception) {
 			onSessionStateChange(session, state, exception);
 		}
 	};
-	
+
 	private UiLifecycleHelper uiHelper;
-	
+
 	@Override
 	public void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		uiHelper = new UiLifecycleHelper(getActivity(), callback);
 		uiHelper.onCreate(savedInstanceState);
 		RestClient.get("Usuarios/count", null, new JsonHttpResponseHandler(){
-			
+
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONObject response) {
@@ -57,14 +58,14 @@ public class MainFragment extends Fragment{
 					e.printStackTrace();
 				}
 			}
-			
+
 		});
 	}
-	
+
 	private void save(int count){
 		this.count = count;
 	}
-	
+
 	@Override
 	public void onResume(){
 		super.onResume();
@@ -74,31 +75,31 @@ public class MainFragment extends Fragment{
 		}
 		uiHelper.onResume();
 	}
-	
+
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data){
 		super.onActivityResult(requestCode, resultCode, data);
 		uiHelper.onActivityResult(requestCode, resultCode, data);
 	}
-	
+
 	@Override
 	public void onPause(){
 		super.onPause();
 		uiHelper.onPause();
 	}
-	
+
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
 		uiHelper.onDestroy();
 	}
-	
+
 	@Override
 	public void onSaveInstanceState(Bundle outState){
 		super.onSaveInstanceState(outState);
 		uiHelper.onSaveInstanceState(outState);
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		View view = inflater.inflate(R.layout.activity_main, container, false);
@@ -107,12 +108,12 @@ public class MainFragment extends Fragment{
 		authButton.setReadPermissions(Arrays.asList("public_profile","user_friends"));
 		return view;
 	}
-	
+
 	private void onSessionStateChange(Session session, SessionState state, Exception exception){
 		if (state.isOpened()) {
 			Log.i(TAG, "Logged in");
 			Request.newMeRequest(Session.getActiveSession(), new Request.GraphUserCallback() {
-				
+
 				@Override
 				public void onCompleted(GraphUser user, Response response) {
 					if (user != null) {
@@ -121,10 +122,11 @@ public class MainFragment extends Fragment{
 						}else{
 							Log.i("fb","ladero");
 						}
-						//Log.i("id", user.getId());
-						//Log.i("nombre", user.getName());
-						//Log.i("cumple", user.getBirthday());
-						CallRestApi(user.getId(),user.getName());
+						SharedPreferences sp = Prefs.getSharedPreferences(getActivity().getApplication().getApplicationContext());
+						String face = sp.getString("idFB", "LADERO");
+						if (!face.equals(user.getId())){
+							CallRestApi(user.getId(),user.getName());
+						}
 					}									
 				}
 			}).executeAsync();
@@ -132,7 +134,7 @@ public class MainFragment extends Fragment{
 			Log.i(TAG, "Logged out");
 		}
 	}
-	
+
 	private void CallRestApi(String Id,String name){
 		RequestParams params = new RequestParams();
 		params.put("idusuario", count);
@@ -140,20 +142,21 @@ public class MainFragment extends Fragment{
 		params.put("idFb", Id);
 		params.put("fechaNac", "");
 		params.put("personajeIdpersonaje", "1");
-		RestClient.put("Usuarios", params, new JsonHttpResponseHandler(){
-			
+		RestClient.post("Usuarios", params, new JsonHttpResponseHandler(){
+
 			//idusuario
 			//nombre
 			//idFb
 			//fechaNac
 			//personajeIdpersonaje
 		});
-		
-		Prefs.saveInt("id", count, getActivity().getApplication());
-		Prefs.saveInt("character", 1, getActivity().getApplication());
-		Prefs.saveString("idFB", Id, getActivity().getApplication());
-		
-		
+
+
+		Prefs.saveInt("id", count, getActivity().getApplication().getApplicationContext());
+		Prefs.saveInt("character", 1, getActivity().getApplication().getApplicationContext());
+		Prefs.saveString("idFB", Id, getActivity().getApplication().getApplicationContext());
+
+
 	}
-	
+
 }
