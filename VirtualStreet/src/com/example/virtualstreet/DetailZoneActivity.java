@@ -1,24 +1,18 @@
 package com.example.virtualstreet;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class DetailZoneActivity extends Activity {
 

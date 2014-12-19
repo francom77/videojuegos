@@ -2,14 +2,15 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-<!--     <ImageView -->
-<!--         android:layout_width="fill_parent" -->
-<!--     	android:layout_height="fill_parent" -->
-<!--     	android:src="@drawable/mainactivitybackgraund" -->
-<!--     	android:scaleType="centerCrop"	> -->
+    <!-- <ImageView -->
+    <!-- android:layout_width="fill_parent" -->
+    <!-- android:layout_height="fill_parent" -->
+    <!-- android:src="@drawable/mainactivitybackgraund" -->
+    <!-- android:scaleType="centerCrop"	> -->
 
-<!--     </ImageView> -->
-    
+
+    <!-- </ImageView> -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,39 +19,41 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical" >
+
+            <com.facebook.widget.LoginButton
+                android:id="@+id/authButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <LinearLayout
+                android:id="@+id/insertPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/text_juv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout1"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="@string/title"
             android:textColor="@color/titles"
             android:textSize="70sp"
             android:textStyle="bold"
             android:typeface="sans" />
+    </RelativeLayout>
 
-        <com.facebook.widget.LoginButton 
-            android:id="@+id/authButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
-        
-        <FrameLayout 
-            android:id="@+id/insertPoint"
-            android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-            ></FrameLayout>
-
-
-    </LinearLayout>
-
-	</RelativeLayout>
 </FrameLayout>
