@@ -10,11 +10,6 @@ public class Prefs {
         
     public static SharedPreferences getSharedPreferences(Context context){
     	 sp = context.getSharedPreferences("userdata", 0);
-    	 SharedPreferences.Editor editor = sp.edit();
-    	 editor.putInt("id", 1);
-    	 editor.putInt("character", 1);
-    	 editor.putString("idFB", "franco.escobar");
-    	 editor.commit();
     	 return sp;
 
     }
@@ -24,8 +19,13 @@ public class Prefs {
    	 	SharedPreferences.Editor editor = sp.edit();
    	 	editor.putInt(key, value);
    	 	editor.commit();
-   	 	
-   	 	Log.i("prueba", Integer.toString(sp.getInt(key, 1000)));
+    }
+    
+    public static void saveString(String key, String value, Context context){
+    	sp = context.getSharedPreferences("userdata", 0);
+   	 	SharedPreferences.Editor editor = sp.edit();
+   	 	editor.putString(key, value);
+   	 	editor.commit();
     }
     
     

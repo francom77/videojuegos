@@ -2,6 +2,11 @@ package com.example.virtualstreet;
 
 import java.util.Arrays;
 
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,6 +28,7 @@ import com.loopj.android.http.RequestParams;
 public class MainFragment extends Fragment{
 	
 	private static final String TAG = "MainFragment";
+	private int count;
 	
 	private Session.StatusCallback callback = new Session.StatusCallback() {
 		
@@ -39,6 +45,24 @@ public class MainFragment extends Fragment{
 		super.onCreate(savedInstanceState);
 		uiHelper = new UiLifecycleHelper(getActivity(), callback);
 		uiHelper.onCreate(savedInstanceState);
+		RestClient.get("Usuarios/count", null, new JsonHttpResponseHandler(){
+			
+			@Override
+			public void onSuccess(int statusCode, Header[] headers,
+					JSONObject response) {
+				try {
+					save(response.getInt("count")+1);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		});
+	}
+	
+	private void save(int count){
+		this.count = count;
 	}
 	
 	@Override
@@ -92,10 +116,15 @@ public class MainFragment extends Fragment{
 				@Override
 				public void onCompleted(GraphUser user, Response response) {
 					if (user != null) {
-						Log.i("id", user.getId());
-						Log.i("nombre", user.getName());
-						Log.i("cumple", user.getBirthday());
-						//CallRestApi(user.getId(),user.getName(),user.getBirthday());
+						if (response != null) {
+							Log.i("fb", response.getRawResponse());
+						}else{
+							Log.i("fb","ladero");
+						}
+						//Log.i("id", user.getId());
+						//Log.i("nombre", user.getName());
+						//Log.i("cumple", user.getBirthday());
+						CallRestApi(user.getId(),user.getName());
 					}									
 				}
 			}).executeAsync();
@@ -104,15 +133,14 @@ public class MainFragment extends Fragment{
 		}
 	}
 	
-	private void CallRestApi(String Id,String name,String fecha){
+	private void CallRestApi(String Id,String name){
 		RequestParams params = new RequestParams();
+		params.put("idusuario", count);
 		params.put("nombre", name );
 		params.put("idFb", Id);
-		params.put("fechaNac", fecha);
+		params.put("fechaNac", "");
 		params.put("personajeIdpersonaje", "1");
-		RestClient.post("Usuarios", params, new JsonHttpResponseHandler(){
-			
-			
+		RestClient.put("Usuarios", params, new JsonHttpResponseHandler(){
 			
 			//idusuario
 			//nombre
@@ -120,6 +148,12 @@ public class MainFragment extends Fragment{
 			//fechaNac
 			//personajeIdpersonaje
 		});
+		
+		Prefs.saveInt("id", count, getActivity().getApplication());
+		Prefs.saveInt("character", 1, getActivity().getApplication());
+		Prefs.saveString("idFB", Id, getActivity().getApplication());
+		
+		
 	}
 	
 }
