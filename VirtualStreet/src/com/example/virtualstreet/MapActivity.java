@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -75,7 +77,9 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 
 	private void getZonas() {
 		listZonas = new ArrayList<Zona>();
-		RestClient.get("Zonas", null, new JsonHttpResponseHandler() {
+		SharedPreferences sp = Prefs.getSharedPreferences(getApplication());
+		String personaje = Integer.toString(sp.getInt("character", 100));
+		RestClient.get("Zonas/?filter[where][personajeIdpersonaje]="+personaje, null, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
 					JSONArray zonas) {
@@ -301,7 +305,6 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 					startActivity(i);
 				}
 			});
-			// Cambiar la imagen
 			return view;
 		}
 		

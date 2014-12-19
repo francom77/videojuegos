@@ -15,6 +15,7 @@ import android.widget.AbsoluteLayout;
 import android.widget.Button;
 
 public class LimpiacityActivity extends Activity {
+	private int zonaOrigen;
 	private int puntaje = 0;
 	private final int delayTime = 3000;
 	private Handler myHandler = new Handler();
@@ -25,6 +26,7 @@ public class LimpiacityActivity extends Activity {
 		setTitle("Puntaje: " + Integer.toString(puntaje));
 		setContentView(R.layout.activity_limpiacity);
 		createButton();
+		zonaOrigen =  getIntent().getExtras().getInt("zonaOrigen");
 		myHandler.postDelayed(closeControls, delayTime);
 	}
 
@@ -75,6 +77,7 @@ public class LimpiacityActivity extends Activity {
 	    public void run() {
 	    	Intent i = new Intent(LimpiacityActivity.this, ResultActivity.class);
 	    	i.putExtra("puntos", Integer.toString(puntaje));
+	    	i.putExtra("zonaOrigen", zonaOrigen);
 	    	startActivity(i);
             finish();
 	    	

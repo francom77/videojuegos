@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -54,13 +55,7 @@ public class SelectCharacter extends Activity {
 		
 		ImageButton imagen = (ImageButton) linearLayout.findViewById(R.id.img_btn);
 		
-		if (name.equals("JUV")) {
-			imagen.setImageResource(R.drawable.juv);
-		} else if (name.equals("DULT")) {
-			imagen.setImageResource(R.drawable.dult);
-		} else {
-			imagen.setImageResource(R.drawable.bila);
-		}
+		imagen.setImageResource(Link.getImagen(name));
 		
 		imagen.setContentDescription(idcharacter);
 		

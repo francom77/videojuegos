@@ -92,6 +92,9 @@ public class MainFragment extends Fragment{
 				@Override
 				public void onCompleted(GraphUser user, Response response) {
 					if (user != null) {
+						Log.i("id", user.getId());
+						Log.i("nombre", user.getName());
+						Log.i("cumple", user.getBirthday());
 						//CallRestApi(user.getId(),user.getName(),user.getBirthday());
 					}									
 				}

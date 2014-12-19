@@ -2,6 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
+    android:onClick="saveCharacter"
     android:orientation="vertical"
     android:scrollbars="vertical" >
 
@@ -39,8 +40,10 @@
                 android:id="@+id/btn_char"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Seleccionar"
-                android:background="@drawable/buttonshape" />
+                android:background="@drawable/buttonshape"
+                android:onClick="saveCharacter"
+                android:text="Seleccionar" />
+
         </LinearLayout>
     </ScrollView>
 
