@@ -92,6 +92,7 @@ public class ResultActivity extends Activity {
 		params.put("puntaje", puntaje);
 		RestClient.put("UsuarioHasZonas", params, new JsonHttpResponseHandler(){
 
+
 		});
 	}
 

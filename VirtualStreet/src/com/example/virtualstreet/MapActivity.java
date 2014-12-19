@@ -237,6 +237,7 @@ public class MapActivity extends ActionBarActivity implements LocationListener,
 				if (results[0]<=zona.getRadio()) { //Entro a la zona
 					inside = true;
 					inZona = zona;
+					Prefs.saveInt("zona", zona.getIdzona() , getApplication().getApplicationContext());
 					showWhatToFind();
 					break;
 				}

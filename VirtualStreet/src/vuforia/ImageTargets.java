@@ -20,14 +20,18 @@ import utils.utils.LoadingDialogHandler;
 import utils.utils.SampleApplicationGLView;
 import utils.utils.Texture;
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -39,6 +43,8 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.example.virtualstreet.LimpiacityActivity;
+import com.example.virtualstreet.Prefs;
 import com.example.virtualstreet.R;
 import com.qualcomm.vuforia.CameraDevice;
 import com.qualcomm.vuforia.DataSet;
@@ -89,6 +95,8 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
     LoadingDialogHandler loadingDialogHandler = new LoadingDialogHandler(this);
     
     boolean mIsDroidDevice = false;
+    
+    Handler displayMessageHandler;
     
     
     // Called when the activity first starts or the user navigates back to an
@@ -176,6 +184,19 @@ public class ImageTargets extends Activity implements SampleApplicationControl,
     @Override
     protected void onResume()
     {
+    	
+    	displayMessageHandler = new Handler() {
+            @Override
+             public void handleMessage(Message msg) {
+
+        		Intent i = new Intent(ImageTargets.this, LimpiacityActivity.class);
+        		SharedPreferences sp = Prefs.getSharedPreferences(getApplication().getApplicationContext());
+        		i.putExtra("zona", sp.getInt("zonaOrigen", 10));
+        		startActivity(i);
+               
+             }
+         };
+         
         Log.d(LOGTAG, "onResume");
         super.onResume();
         

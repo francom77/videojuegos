@@ -17,7 +17,7 @@ import android.widget.Button;
 public class LimpiacityActivity extends Activity {
 	private int zonaOrigen;
 	private int puntaje = 0;
-	private final int delayTime = 3000;
+	private final int delayTime = 10000;
 	private Handler myHandler = new Handler();
 	
 	@Override

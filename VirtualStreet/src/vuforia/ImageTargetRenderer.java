@@ -16,6 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
 import android.opengl.Matrix;
+import android.os.Message;
 import android.util.Log;
 
 import com.qualcomm.vuforia.Matrix44F;
@@ -58,6 +59,8 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer
     private int texSampler2DHandle;
     
     private Teapot mTeapot;
+    
+    private int lastTrackableId = -1;
     
     private float kBuildingScale = 12.0f;
     private SampleApplication3DModel mBuildingsModel;
@@ -193,6 +196,11 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer
         {
             TrackableResult result = state.getTrackableResult(tIdx);
             Trackable trackable = result.getTrackable();
+             
+            if (trackable.getId() != lastTrackableId) {
+             displayMessage("VAMOS HIJO DE PUTA");
+             lastTrackableId = trackable.getId();
+            }
             printUserData(trackable);
             Matrix44F modelViewMatrix_Vuforia = Tool
                 .convertPose2GLMatrix(result.getPose());
@@ -304,6 +312,14 @@ public class ImageTargetRenderer implements GLSurfaceView.Renderer
     {
         mTextures = textures;
         
+    }
+    
+    private void displayMessage(String text)
+    {
+        // We use a handler because this thread cannot change the UI
+        Message message = new Message();
+        message.obj = text;
+        mActivity.displayMessageHandler.sendMessage(message);
     }
     
 }
