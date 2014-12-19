@@ -2,13 +2,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <ImageView
-        android:layout_width="fill_parent"
-    	android:layout_height="fill_parent"
-    	android:src="@drawable/mainactivitybackgraund"
-    	android:scaleType="centerCrop"	>
+<!--     <ImageView -->
+<!--         android:layout_width="fill_parent" -->
+<!--     	android:layout_height="fill_parent" -->
+<!--     	android:src="@drawable/mainactivitybackgraund" -->
+<!--     	android:scaleType="centerCrop"	> -->
 
-    </ImageView>
+<!--     </ImageView> -->
     
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,12 +42,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
         
-        <LinearLayout 
+        <FrameLayout 
             android:id="@+id/insertPoint"
             android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-            ></LinearLayout>
+            ></FrameLayout>
 
 
     </LinearLayout>

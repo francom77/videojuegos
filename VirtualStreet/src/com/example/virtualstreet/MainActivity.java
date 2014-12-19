@@ -28,10 +28,20 @@ public class MainActivity extends FragmentActivity {
 			mainFragment = (MainFragment) getSupportFragmentManager()
 					.findFragmentById(android.R.id.content);
 		}
-
+//		// obteniendo fuente
+//		Typeface font = Typeface.createFromAsset(getAssets(),
+//				"gloriahallelujah.ttf");
+//		// obtenendo elementos
+//		TextView title = (TextView) findViewById(R.id.text_juv);
+//		Button start = (Button) findViewById(R.id.button_start);
+//		Button map = (Button) findViewById(R.id.button_map);
+//		Button character = (Button) findViewById(R.id.button_character);
+//		// seteando la fuente
+//		title.setTypeface(font);
+//		start.setTypeface(font);
+//		map.setTypeface(font);
+//		character.setTypeface(font);
 	}
-
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
